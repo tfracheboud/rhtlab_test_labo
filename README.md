@@ -12,8 +12,8 @@ That being said, it’s important to note that energy efficiency is just one of 
 
 ## Installation and clean setup
 
-- If you are on Windows 10 or 11, please follow the [detailed installation instructions of this operating system](INSTALLWINDOWS.md).
-- If you are on macOS or Linux, please follow the [detailed installation instructions of these operating system](INSTALLMACOSLINUX.md).
+- If you are on Windows 10 or 11, please follow the [detailed installation instructions of this operating system](INSTALL.md).
+- If you are on macOS or Linux, please follow the [detailed installation instructions of these operating system](INSTALL.md/#install-an-isolated-python-environment-with-setup-mambash-recommended-for-beginners).
 
 ## Quickly look at a few notebook, without executing any code
 
