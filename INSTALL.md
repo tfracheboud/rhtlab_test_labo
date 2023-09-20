@@ -238,12 +238,12 @@ Going back to your GitHub account, in the upper-right corner of any page, click 
 > [!NOTE]
 > If you receive an error that `~/.ssh` doesn't exist, you do not have an existing SSH key pair in the default location. You can create a new SSH key pair in the next step. If you have several SSH keys already, that means you aren't a complete beginner, so you can directly follow [this tutorial](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
 
-You can now clone the working repo by running into the terminal:
+Next, clone this project by typing the following commands, **you have to get the correct address** of the repository by clicking on "<kbd><></kbd> <kbd>Clone</kbd>" then copy the SSH URL:
 
 ```bash
 mkdir git
 cd git
-git clone git@github.com:heig-vd-iese/rht.git
+git clone git@github.com:heig-vd-iese/rht-lab-project-2023-24-NAME_TEAM.git
 ```
 
 Type "yes" when prompted.
@@ -253,20 +253,20 @@ You can install packages with mamba from an `.yml` file directly in the base env
 <!-- This content will not appear in the rendered Markdown -->
 <!--
 ```bash
-cd rht
+cd rhtlab
 mamba env update -n base --file environment.yml
 ``` -->
 
 <!-- ```bash
-cd rht
+cd rhtlab
 mamba env create -f environment.yml
-``` <!--
+``` -->
 
 <!-- This will install the packages listed in the `environment.yml` file into the `(base)` environment. -->
 
 This will create a new environment with the packages listed in the `environment.yml` file into the `(rhtlab)` environment.
 
-You're finally done with the most important setup. 
+You're finally done with the most important setup.
 
 <!-- Now we are going to install a nice IDE (Integrated development environment). -->
 
@@ -351,7 +351,7 @@ For this, open a terminal, and run the following:
 
 ```bash
 cd $HOME # or whatever development directory you chose earlier
-cd rht # go to this project's directory
+cd rht-lab-project-2023-24-NAME_TEAM # go to this project's directory
 git pull
 ```
 
