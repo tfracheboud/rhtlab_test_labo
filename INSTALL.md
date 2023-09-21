@@ -243,7 +243,7 @@ Next, clone this project by typing the following commands, **you have to get the
 ```bash
 mkdir git
 cd git
-git clone git@github.com:heig-vd-iese/rhtlab2023-NAME_TEAM.git
+git clone git@github.com:heig-vd-iese/rhtlab2023-NAME-TEAM.git
 ```
 
 Type "yes" when prompted.
@@ -351,7 +351,7 @@ For this, open a terminal, and run the following:
 
 ```bash
 cd $HOME # or whatever development directory you chose earlier
-cd rhtlab2023-NAME_TEAM # go to this project's directory
+cd rhtlab2023-NAME-TEAM # go to this project's directory
 git pull
 ```
 
