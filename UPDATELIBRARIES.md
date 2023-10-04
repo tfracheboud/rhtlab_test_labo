@@ -23,7 +23,7 @@ Next, let's update the libraries. First, let's update `mamba` itself:
 
     mamba update -c defaults -n base conda
 
-Then we'll delete this project's `homl3` environment:
+Then we'll delete this project's `rhtlab` environment:
 
     mamba activate base
     mamba env remove -n rhtlab

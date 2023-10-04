@@ -68,11 +68,21 @@ you will get the following with your defined `<username>`:
 > /home/<username>
 ```
 
+In the following section, we'll explain how to install Python correctly on your machine.
+
 </details>
 
 ---
 
 ## Installing Python with Mambaforge from scratch
+
+Before we start, it is important to note the following:
+
+> [!IMPORTANT]
+> Mambaforge (Discouraged as of September 2023)
+> With the [release](https://github.com/conda-forge/miniforge/releases/tag/23.3.1-0) of Miniforge3-22.3.1-0, that incorporated the changes in https://github.com/conda-forge/miniforge/pull/277, the packages and configuration of Mambaforge and Miniforge3 are now identical. The only difference between the two is the name of the installer and, subsequently, the default installation directory.
+
+Since 2023-09, the `Mambaforge` and `Miniforge3` installers are identical. The only difference is the name of the default location. So whenever you see one name or the other, it refers to the same installer and the same documentation.
 
 We now need to make sure that there is nothing in your operating system that could interfere with the configuration we are going to install. In your terminal (WSL, macOS or Linux), please type the following:
 
@@ -88,7 +98,7 @@ which python
 
 Go to the [Mambaforge distribution](https://github.com/conda-forge/miniforge#mambaforge) page and find the Linux distribution that corresponds to the type of CPU (architecture) you are using, and right-click and copy the link under this [table](https://github.com/conda-forge/miniforge#miniforge3).
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Do not select an installer under *Miniforge-pypy3* but *Miniforge3*.
 
 On most Windows laptop and computer, the architecture is likely to be AMD64, but you can make sure by going on your *Settings* (the operating system one), click on *System*, click on the *About tab*, under *Device specifications*, the *System type* indicates which CPU you have.
@@ -137,7 +147,7 @@ The installation is starting...
 
 At this point, we have to check if your configuration works fine:
 
-- Run `which python`, you should see that the python you are running is in the mambaforge directory: `home/<username>/mambaforge/bin/python` on Linux/WSL and `/Users/<username>/mambaforge/bin/python`.
+- Run `which python`, you should see that the python you are running is in the mambaforge directory: `home/<username>/miniforge3/bin/python` on Linux/WSL and `/Users/<username>//miniforge3/bin/python`.
 - This means everything was just setup correctly.
 
 If you encounter any difficulties during your installation, you can follow the [Troubleshooting section](#troubleshooting-in-the-setup-guide) or start from scratch with this [beginner's guide](https://qbiwan.github.io/fastpages/mamba-installation).
@@ -303,7 +313,7 @@ You can now clone the working repo by running into the terminal:
 ```bash
 mkdir git
 cd git
-git clone git@github.com:heig-vd-iese/rht.git
+git clone git@github.com:heig-vd-iese/rhtlab.git
 ```
 
 Type "yes" when prompted.
@@ -313,12 +323,12 @@ You can install packages with mamba from an `.yml` file directly in the base env
 <!-- This content will not appear in the rendered Markdown -->
 
 ```bash
-cd rht
+cd rhtlab
 mamba env update -n base --file environment.yml
 ```
 
 <!-- ```bash
-cd rht
+cd rhtlab
 mamba env create -f environment.yml
 ``` -->
 
@@ -371,6 +381,129 @@ If you get many problems with your git branch or repo, please get in touch with 
 
 ---
 
+## Troubleshooting in the setup guide
+
+This section is designed to help you solve problems before contacting support directly. Try one of the following steps, depending on which part of the guide is giving you trouble.
+
+---
+
+<details>
+
+<summary>Installation automation (to optimize later on)</summary>
+
+### Install an isolated Python environment with `setup-conda.sh` (not necessary to follow)
+
+We are going to run the following script from the terminal `setup-conda.sh`. Don't worry, we will guide you through the all process.
+
+Go to your download folder by typing the following command in your terminal:
+
+```bash
+cd downloads
+wget https://github.com/fastai/fastsetup/blob/master/setup-conda.sh
+```
+
+Then, you can type the following command into the terminal:
+
+```bash
+chmod u+x setup-conda.sh
+```
+
+In a nutshell, those commands help to change the permissions to add executable permission to the current user (yourself). Then type:
+
+```bash
+ ./setup-conda.sh
+```
+
+The installation is starting...
+
+- Restart terminal for Ubuntu.
+- You should see `(base)` at the beginning of prompt.
+
+> [!NOTE]
+> Everytime you open a new Ubuntu terminal, you should see `(base)` environment. That means your configuration setup works well for this course and labs.
+
+At this point, we have to check if your configuration works fine:
+
+- Run `which python`, you should see that the python you are running is in the mambaforge directory: `home/<username>/miniforge3/bin/python` on Linux/WSL and `/Users/<username>/miniforge3/bin/python`.
+- This means everything was just setup correctly.
+
+</details>
+
+---
+
+<details>
+
+<summary>Only if you encounter difficulties with WSL</summary>
+
+### Troubleshooting with WSL
+
+There is no need to enable 'Windows Subsystem for Linux' in the `Turn Windows features on or off` settings unless you get in trouble with your installation setup. In such case, it is recommended to follow this [tutorial](https://learn.microsoft.com/en-us/windows/wsl/troubleshooting) or get back to assistance.
+
+- [Enable WSL correctly for Windows 10](https://code.visualstudio.com/docs/remote/wsl-tutorial#_enable-wsl)
+
+</details>
+
+<details>
+
+<summary>Only if you encounter difficulties with Mambaforge</summary>
+
+### Troublehsooting with Mambaforge
+
+- `rm -rf mambaforge`
+- Remove conda initializing commands from `\\wsl.localhost\Ubuntu\home\<username>`: `.bashrc` file (with a text editor). Delete everything at the end of the script between these commands:
+
+```bash
+# >>> conda initialize >>>
+__conda_setup=
+...
+# <<< conda initialize <<<
+```
+
+---
+
+> [!NOTE]
+> Uncollapse these section depending where you need more help to solve troubleshootings.
+
+</details>
+
+<details>
+
+<summary>Only if you encounter difficulties with GitHub</summary>
+
+### Troubleshooting with GitHub
+
+We regularly update the notebooks to fix issues and add support for new librarires. So make sure you update this project regularly.
+
+For this, open a terminal, and run the following:
+
+```bash
+cd $HOME # or whatever development directory you chose earlier
+cd rhtlab # go to this project's directory
+git pull
+```
+
+If you get an error, it's probably because you modified a notebook. In this case, before running `git pull` you will first need to commit your changes. I recommend doing this in your own branch, or else you may get conflicts:
+
+```bash
+git checkout -b my_branch # you can use another branch name if you want
+git add -u
+git commit -m "Describe your changes here"
+git checkout main
+git pull
+```
+
+Next, let's update the libraries. First, let's update `mamba` itself:
+
+```bash
+mamba update -c defaults -n base mamba
+mamba activate base
+jupyter lab --no-browser
+```
+
+</details>
+
+---
+
 ## Further references for the setup (not necessary to follow)
 
 <details>
@@ -400,7 +533,9 @@ If you get many problems with your git branch or repo, please get in touch with 
 2. [Open a WSL project in Visual Studio Code](https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-vscode#open-a-wsl-project-in-visual-studio-code)
 3. [Open a remote folder or workspace](https://code.visualstudio.com/docs/remote/wsl#_open-a-remote-folder-or-workspace)
 4. [Install Ubuntu on WSL2 and get started with graphical applications](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-11-with-gui-support#1-overview)
+    * [How to install Windows Subsystem for Linux (WSL) on Windows 11](https://pureinfotech.com/install-wsl-windows-11/)
 5. [Install Ubuntu on WSL2 on Windows 10](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#1-overview)
+    * [How to install WSL2 (Windows Subsystem for Linux2) on Windows 10](https://pureinfotech.com/install-windows-subsystem-linux-2-windows-10/)
 6. [How to get access to your Linux (WSL) Files in Windows 10 or 11](https://www.howtogeek.com/426749/how-to-access-your-linux-wsl-files-in-windows-10/)
 7. [What're the differences between these 2 ways of launching WSL?](https://superuser.com/questions/1765100/whatre-the-differences-between-these-2-ways-of-of-launching-wsl)
 8. [Get started with Docker remote containers on WSL 2](https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-containers)
@@ -408,6 +543,7 @@ If you get many problems with your git branch or repo, please get in touch with 
 10. [Get started tutorial for Python in VS Code](https://code.visualstudio.com/docs/python/python-tutorial#_configure-and-run-the-debugger)
 11. [Add User to WSL Linux Distro in Windows 10](https://winaero.com/add-user-wsl-linux-distro-windows-10/)
 12. [Switch user in WSL Linux Distro in Windows 10](https://winaero.com/switch-user-wsl-linux-distro-windows-10/)
+13. [How to set default user, switch user, and remove a user for WSL](https://www.thewindowsclub.com/how-to-set-default-user-switch-user-and-remove-a-user-for-wsl)
 
 ### For Git and SSH
 
