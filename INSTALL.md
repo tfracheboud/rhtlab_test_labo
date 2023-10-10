@@ -147,7 +147,7 @@ The installation is starting...
 
 At this point, we have to check if your configuration works fine:
 
-- Run `which python`, you should see that the python you are running is in the mambaforge directory: `home/<username>/miniforge3/bin/python` on Linux/WSL and `/Users/<username>//miniforge3/bin/python`.
+- Run `which python`, you should see that the python you are running is in the mambaforge directory: `home/<username>/miniforge3/bin/python` on Linux/WSL and `/Users/<username>/miniforge3/bin/python`.
 - This means everything was just setup correctly.
 
 If you encounter any difficulties during your installation, you can follow the [Troubleshooting section](#troubleshooting-in-the-setup-guide) or start from scratch with this [beginner's guide](https://qbiwan.github.io/fastpages/mamba-installation).
